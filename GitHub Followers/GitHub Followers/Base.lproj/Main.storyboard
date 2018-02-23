@@ -26,10 +26,10 @@
             </objects>
             <point key="canvasLocation" x="-446" y="133"/>
         </scene>
-        <!--View Controller-->
+        <!--Username Search View Controller-->
         <scene sceneID="yEC-Kr-dhJ">
             <objects>
-                <viewController id="J46-sC-Had" sceneMemberID="viewController">
+                <viewController id="J46-sC-Had" customClass="UsernameSearchViewController" customModule="GitHub_Followers" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Wqb-cP-tHG">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
