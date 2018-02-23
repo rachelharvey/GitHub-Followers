@@ -12,6 +12,7 @@
 		A20A70D520409B13009C4836 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A20A70D420409B13009C4836 /* Assets.xcassets */; };
 		A20A70D820409B13009C4836 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A20A70D620409B13009C4836 /* LaunchScreen.storyboard */; };
 		A20A70E02040A3B9009C4836 /* UsernameSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20A70DF2040A3B9009C4836 /* UsernameSearchViewController.swift */; };
+		A20A70E22040AF50009C4836 /* NetworkRequestor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20A70E12040AF50009C4836 /* NetworkRequestor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		A20A70D720409B13009C4836 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A20A70D920409B13009C4836 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A20A70DF2040A3B9009C4836 /* UsernameSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsernameSearchViewController.swift; sourceTree = "<group>"; };
+		A20A70E12040AF50009C4836 /* NetworkRequestor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRequestor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +62,7 @@
 				A20A70D420409B13009C4836 /* Assets.xcassets */,
 				A20A70D620409B13009C4836 /* LaunchScreen.storyboard */,
 				A20A70D920409B13009C4836 /* Info.plist */,
+				A20A70E12040AF50009C4836 /* NetworkRequestor.swift */,
 			);
 			path = "GitHub Followers";
 			sourceTree = "<group>";
@@ -137,6 +140,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A20A70E02040A3B9009C4836 /* UsernameSearchViewController.swift in Sources */,
+				A20A70E22040AF50009C4836 /* NetworkRequestor.swift in Sources */,
 				A20A70CE20409B13009C4836 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

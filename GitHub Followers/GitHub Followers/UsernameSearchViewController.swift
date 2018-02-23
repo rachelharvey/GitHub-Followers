@@ -16,6 +16,7 @@ class UsernameSearchViewController: UIViewController,UITextFieldDelegate {
         super.viewDidLoad()
         self.usernameTextField.delegate = self
         self.usernameTextField.returnKeyType = UIReturnKeyType.done
+        NetworkRequestor.connection.getFollowers(username: "rachelharveyafdsfads")
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
