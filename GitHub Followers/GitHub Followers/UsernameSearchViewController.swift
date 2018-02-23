@@ -10,13 +10,40 @@ import UIKit
 
 class UsernameSearchViewController: UIViewController,UITextFieldDelegate,NetworkRequestorDelegate {
     
-    @IBOutlet weak var usernameTextField: UITextField!
+    var usernameTextField: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.addSearchBarButtonItems()
+        NetworkRequestor.connection.delegate = self
+    }
+    
+    func addSearchBarButtonItems() {
+        let barItemY: CGFloat = 0.0
+        let barItemHeight: CGFloat = 20.0
+        
+        let textFieldX: CGFloat = 0.0
+        let textFieldWidth: CGFloat = self.view.frame.size.width*0.6
+        let textFieldFrame = CGRect(x: textFieldX, y: barItemY, width: textFieldWidth, height: barItemHeight)
+        
+        self.usernameTextField = UITextField(frame: textFieldFrame)
+        self.usernameTextField.placeholder = "Enter GitHub Username Here"
         self.usernameTextField.delegate = self
         self.usernameTextField.returnKeyType = UIReturnKeyType.done
-        NetworkRequestor.connection.delegate = self
+        let leftItem = UIBarButtonItem(customView: self.usernameTextField)
+        self.navigationItem.leftBarButtonItem = leftItem
+        
+        let buttonWidth: CGFloat = self.view.frame.size.width*0.3
+        let buttonX: CGFloat = self.view.frame.size.width-buttonWidth
+        let cancelButtonFrame = CGRect(x: buttonX, y: barItemY, width: buttonWidth, height: barItemHeight)
+        let cancelButton = UIButton(frame: cancelButtonFrame)
+        cancelButton.titleLabel?.numberOfLines = 1
+        cancelButton.titleLabel?.adjustsFontSizeToFitWidth = true
+        cancelButton.titleLabel?.lineBreakMode = NSLineBreakMode.byClipping
+        cancelButton.setTitle("Cancel", for: .normal)
+        cancelButton.addTarget(self, action: #selector(UsernameSearchViewController.cancelSearch), for: .touchUpInside)
+        let rightItem = UIBarButtonItem(customView: cancelButton)
+        self.navigationItem.rightBarButtonItem = rightItem
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -27,7 +54,7 @@ class UsernameSearchViewController: UIViewController,UITextFieldDelegate,Network
         return true
     }
     
-    @IBAction func cancelSearch(_ sender: Any) {
+    @objc func cancelSearch() {
         self.usernameTextField.resignFirstResponder()
         self.usernameTextField.text = ""
     }
