@@ -28,8 +28,12 @@ class UsernameSearchViewController: UIViewController,UITextFieldDelegate,Network
         
         self.usernameTextField = UITextField(frame: textFieldFrame)
         self.usernameTextField.placeholder = "Enter GitHub Username Here"
+        self.usernameTextField.borderStyle = UITextBorderStyle.roundedRect
+        self.usernameTextField.backgroundColor = UIColor.darkGray
+        self.usernameTextField.textColor = UIColor.lightGray
         self.usernameTextField.delegate = self
         self.usernameTextField.returnKeyType = UIReturnKeyType.done
+        self.usernameTextField.keyboardAppearance = UIKeyboardAppearance.dark
         let leftItem = UIBarButtonItem(customView: self.usernameTextField)
         self.navigationItem.leftBarButtonItem = leftItem
         
