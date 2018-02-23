@@ -8,6 +8,23 @@
 
 import UIKit
 
-class UsernameSearchViewController: UIViewController {
+class UsernameSearchViewController: UIViewController,UITextFieldDelegate {
     
+    @IBOutlet weak var usernameTextField: UITextField!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.usernameTextField.delegate = self
+        self.usernameTextField.returnKeyType = UIReturnKeyType.done
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        print(self.usernameTextField.text)
+        return true
+    }
+    
+    @IBAction func cancelSearch(_ sender: Any) {
+        self.usernameTextField.resignFirstResponder()
+        self.usernameTextField.text = ""
+    }
 }
