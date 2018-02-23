@@ -8,15 +8,15 @@
 
 import Foundation
 
-@objc protocol NetworkRequestorDelegate {
+@objc protocol NetworkRequesterDelegate {
     func followersRecieved(array: NSArray)
     func requestError()
 }
 
-class NetworkRequestor {
-    static let connection = NetworkRequestor()
+class NetworkRequester {
+    static let connection = NetworkRequester()
     
-    var delegate: NetworkRequestorDelegate?
+    var delegate: NetworkRequesterDelegate?
     private var session: URLSession!
     
     init() {

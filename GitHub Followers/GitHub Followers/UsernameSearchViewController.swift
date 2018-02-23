@@ -8,14 +8,14 @@
 
 import UIKit
 
-class UsernameSearchViewController: UIViewController,UITextFieldDelegate,NetworkRequestorDelegate {
+class UsernameSearchViewController: UIViewController,UITextFieldDelegate,NetworkRequesterDelegate {
     
     var usernameTextField: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.addSearchBarButtonItems()
-        NetworkRequestor.connection.delegate = self
+        NetworkRequester.connection.delegate = self
     }
     
     func addSearchBarButtonItems() {
@@ -48,7 +48,7 @@ class UsernameSearchViewController: UIViewController,UITextFieldDelegate,Network
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if let username = self.usernameTextField.text {
-            NetworkRequestor.connection.getFollowers(username: username)
+            NetworkRequester.connection.getFollowers(username: username)
         }
         textField.resignFirstResponder()
         return true
@@ -59,7 +59,7 @@ class UsernameSearchViewController: UIViewController,UITextFieldDelegate,Network
         self.usernameTextField.text = ""
     }
     
-    //----------NetworkRequestorDelegate----------
+    //----------NetworkRequesterDelegate----------
     
     func followersRecieved(array: NSArray) {
         print(array)
