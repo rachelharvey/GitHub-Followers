@@ -8,7 +8,7 @@
 
 import UIKit
 
-class UsernameSearchViewController: UIViewController,UITextFieldDelegate {
+class UsernameSearchViewController: UIViewController,UITextFieldDelegate,NetworkRequestorDelegate {
     
     @IBOutlet weak var usernameTextField: UITextField!
     
@@ -16,11 +16,14 @@ class UsernameSearchViewController: UIViewController,UITextFieldDelegate {
         super.viewDidLoad()
         self.usernameTextField.delegate = self
         self.usernameTextField.returnKeyType = UIReturnKeyType.done
-        NetworkRequestor.connection.getFollowers(username: "rachelharveyafdsfads")
+        NetworkRequestor.connection.delegate = self
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        print(self.usernameTextField.text)
+        if let username = self.usernameTextField.text {
+            NetworkRequestor.connection.getFollowers(username: username)
+        }
+        textField.resignFirstResponder()
         return true
     }
     
@@ -28,4 +31,15 @@ class UsernameSearchViewController: UIViewController,UITextFieldDelegate {
         self.usernameTextField.resignFirstResponder()
         self.usernameTextField.text = ""
     }
+    
+    //----------NetworkRequestorDelegate----------
+    
+    func followersRecieved(array: NSArray) {
+        print(array)
+    }
+    
+    func requestError() {
+        print("Request Error")
+    }
+    
 }

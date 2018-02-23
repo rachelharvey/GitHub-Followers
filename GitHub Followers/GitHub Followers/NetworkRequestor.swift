@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol NetworkRequestorDelegate {
+@objc protocol NetworkRequestorDelegate {
     func followersRecieved(array: NSArray)
     func requestError()
 }
