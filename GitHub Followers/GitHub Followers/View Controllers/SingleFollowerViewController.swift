@@ -52,7 +52,6 @@ class SingleFollowerViewController: UIViewController, NetworkRequesterDelegate {
         }
         set {
             self._follower = newValue
-            print(newValue)
             self.setFollowerDataLabels()
             
         }
@@ -60,12 +59,10 @@ class SingleFollowerViewController: UIViewController, NetworkRequesterDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        NetworkRequester.connection.delegate = self
-        NetworkRequester.connection.getFollowerInfo(login: self.login)
         self.navigationController?.setNavigationBarHidden(true, animated: false)
+        self.loginLabel?.text = self.login
         self.bigImageView?.image = self.followerImage
         self.setSmallImage()
-        self.loginLabel?.text = self.login
     }
     
     func setSmallImage() {
