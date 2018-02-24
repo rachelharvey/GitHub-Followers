@@ -15,6 +15,7 @@
 		A20A70E22040AF50009C4836 /* NetworkRequester.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20A70E12040AF50009C4836 /* NetworkRequester.swift */; };
 		A20A70E62040EAEC009C4836 /* FollowersCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20A70E52040EAEC009C4836 /* FollowersCollectionViewController.swift */; };
 		A20A70E92040EE11009C4836 /* FollowerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20A70E82040EE11009C4836 /* FollowerCollectionViewCell.swift */; };
+		A20A70EE204108C5009C4836 /* SingleFollowerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20A70ED204108C5009C4836 /* SingleFollowerViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		A20A70E12040AF50009C4836 /* NetworkRequester.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRequester.swift; sourceTree = "<group>"; };
 		A20A70E52040EAEC009C4836 /* FollowersCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowersCollectionViewController.swift; sourceTree = "<group>"; };
 		A20A70E82040EE11009C4836 /* FollowerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowerCollectionViewCell.swift; sourceTree = "<group>"; };
+		A20A70ED204108C5009C4836 /* SingleFollowerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleFollowerViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +79,7 @@
 			children = (
 				A20A70DF2040A3B9009C4836 /* UsernameSearchViewController.swift */,
 				A20A70E52040EAEC009C4836 /* FollowersCollectionViewController.swift */,
+				A20A70ED204108C5009C4836 /* SingleFollowerViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -163,6 +166,7 @@
 			files = (
 				A20A70E02040A3B9009C4836 /* UsernameSearchViewController.swift in Sources */,
 				A20A70E22040AF50009C4836 /* NetworkRequester.swift in Sources */,
+				A20A70EE204108C5009C4836 /* SingleFollowerViewController.swift in Sources */,
 				A20A70E62040EAEC009C4836 /* FollowersCollectionViewController.swift in Sources */,
 				A20A70CE20409B13009C4836 /* AppDelegate.swift in Sources */,
 				A20A70E92040EE11009C4836 /* FollowerCollectionViewCell.swift in Sources */,
