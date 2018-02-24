@@ -19,6 +19,11 @@ class FollowersCollectionViewController: UICollectionViewController, UICollectio
         self.title = "Followers"
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.setNavigationBarHidden(false, animated: false)
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "followerSelected" {
             let vc = segue.destination as! SingleFollowerViewController

@@ -43,6 +43,11 @@ class UsernameSearchViewController: UIViewController,UITextFieldDelegate,Network
         NetworkRequester.connection.delegate = self
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.setNavigationBarHidden(false, animated: false)
+    }
+    
     func addSearchBarButtonItems() {
         let barItemY: CGFloat = 0.0
         let barItemHeight: CGFloat = 20.0
