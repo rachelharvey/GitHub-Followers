@@ -69,9 +69,12 @@ class SingleFollowerViewController: UIViewController, NetworkRequesterDelegate {
                     self.emailLabel?.isHidden = true
                     self.emailImageView?.isHidden = true
                 }
+                self.htmlUrl = newValue.value(forKey: "html_url") as? String
             }
         }
     }
+    
+    var htmlUrl: String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -92,6 +95,12 @@ class SingleFollowerViewController: UIViewController, NetworkRequesterDelegate {
     
     @IBAction func backButtonPushed() {
         self.navigationController?.popViewController(animated: true)
+    }
+    
+    @IBAction func visitGitHubProfile() {
+        if let url = URL(string: self.htmlUrl) {
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        }
     }
     
     //----------NetworkRequesterDelegate----------
