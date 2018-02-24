@@ -16,6 +16,7 @@ class FollowersCollectionViewController: UICollectionViewController, UICollectio
         super.viewDidLoad()
         self.collectionView?.delegate = self
         NetworkRequester.connection.delegate = self
+        self.title = "Followers"
     }
     
     //----------UICollectionView----------
