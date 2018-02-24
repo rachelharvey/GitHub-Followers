@@ -10,6 +10,16 @@ import UIKit
 
 class SingleFollowerViewController: UIViewController, NetworkRequesterDelegate {
     
+    @IBOutlet weak var bigImageView: UIImageView?
+    @IBOutlet weak var smallImageView: UIImageView?
+    @IBOutlet weak var loginLabel: UILabel?
+    @IBOutlet weak var nameLabel: UILabel?
+    @IBOutlet weak var followersNumberLabel: UILabel?
+    @IBOutlet weak var followingNumberLabel: UILabel?
+    @IBOutlet weak var repositoriesNumberLabel: UILabel?
+    @IBOutlet weak var locationLabel: UILabel?
+    @IBOutlet weak var emailLabel: UILabel?
+    
     private var _login: String!
     var login: String {
         get {
@@ -36,8 +46,12 @@ class SingleFollowerViewController: UIViewController, NetworkRequesterDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         NetworkRequester.connection.delegate = self
-        //NetworkRequester.connection.getFollowerInfo(login: self.login)
+        NetworkRequester.connection.getFollowerInfo(login: self.login)
         self.navigationController?.setNavigationBarHidden(true, animated: false)
+    }
+    
+    @IBAction func backButtonPushed() {
+        self.navigationController?.popViewController(animated: true)
     }
     
     //----------NetworkRequesterDelegate----------
