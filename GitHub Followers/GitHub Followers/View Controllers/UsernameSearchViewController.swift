@@ -49,6 +49,8 @@ class UsernameSearchViewController: UIViewController,UITextFieldDelegate,Network
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(false, animated: false)
         NetworkRequester.connection.delegate = self
+        self.usernameTextField.text = ""
+        self.statusLabel?.text = self.defaultText
     }
     
     func addSearchBarButtonItems() {
