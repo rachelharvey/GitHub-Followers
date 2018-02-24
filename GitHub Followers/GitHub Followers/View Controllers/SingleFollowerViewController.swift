@@ -52,25 +52,8 @@ class SingleFollowerViewController: UIViewController, NetworkRequesterDelegate {
         set {
             self._follower = newValue
             print(newValue)
-            DispatchQueue.main.async {
-                self.nameLabel?.text = newValue.value(forKey: "name") as? String
-                self.followersNumberLabel?.text = "\(newValue.value(forKey: "followers") as! NSNumber)"
-                self.followingNumberLabel?.text = "\(newValue.value(forKey: "following") as! NSNumber)"
-                self.repositoriesNumberLabel?.text = "\(newValue.value(forKey: "public_repos") as! NSNumber)"
-                if let location = newValue.value(forKey: "location") as? String {
-                    self.locationLabel?.text = location
-                } else {
-                    self.locationLabel?.isHidden = true
-                    self.locationImageView?.isHidden = true
-                }
-                if let email = newValue.value(forKey: "email") as? String {
-                    self.emailLabel?.text = email
-                } else {
-                    self.emailLabel?.isHidden = true
-                    self.emailImageView?.isHidden = true
-                }
-                self.htmlUrl = newValue.value(forKey: "html_url") as? String
-            }
+            self.setFollowerDataLabels()
+            
         }
     }
     
@@ -93,6 +76,26 @@ class SingleFollowerViewController: UIViewController, NetworkRequesterDelegate {
         self.loginLabel?.text = self.login
     }
     
+    func setFollowerDataLabels() {
+        self.nameLabel?.text = self.follower.value(forKey: "name") as? String
+        self.followersNumberLabel?.text = "\(self.follower.value(forKey: "followers") as! NSNumber)"
+        self.followingNumberLabel?.text = "\(self.follower.value(forKey: "following") as! NSNumber)"
+        self.repositoriesNumberLabel?.text = "\(self.follower.value(forKey: "public_repos") as! NSNumber)"
+        if let location = self.follower.value(forKey: "location") as? String {
+            self.locationLabel?.text = location
+        } else {
+            self.locationLabel?.isHidden = true
+            self.locationImageView?.isHidden = true
+        }
+        if let email = self.follower.value(forKey: "email") as? String {
+            self.emailLabel?.text = email
+        } else {
+            self.emailLabel?.isHidden = true
+            self.emailImageView?.isHidden = true
+        }
+        self.htmlUrl = self.follower.value(forKey: "html_url") as? String
+    }
+    
     @IBAction func backButtonPushed() {
         self.navigationController?.popViewController(animated: true)
     }
@@ -106,7 +109,9 @@ class SingleFollowerViewController: UIViewController, NetworkRequesterDelegate {
     //----------NetworkRequesterDelegate----------
     
     func followerInfoRecieved(dictionary: NSDictionary) {
-        self.follower = dictionary
+        DispatchQueue.main.async {
+            self.follower = dictionary
+        }
     }
     
     func requestError() {
