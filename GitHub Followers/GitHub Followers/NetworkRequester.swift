@@ -47,7 +47,7 @@ class NetworkRequester {
     }
     
     func getEncodedString(string: String) -> String {
-        let encoded = string.addingPercentEncoding(withAllowedCharacters: NSCharacterSet(charactersIn: " ").inverted)
+        let encoded = string.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlHostAllowed)
         return encoded!
     }
     
