@@ -22,7 +22,9 @@ class FollowersCollectionViewController: UICollectionViewController, UICollectio
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "followerSelected" {
             let vc = segue.destination as! SingleFollowerViewController
-            vc.login = (sender as! FollowerCollectionViewCell).login
+            let cell = sender as! FollowerCollectionViewCell
+            vc.login = cell.login
+            vc.followerImage = cell.getFollowerImage()
         }
     }
     

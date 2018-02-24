@@ -32,6 +32,16 @@ class SingleFollowerViewController: UIViewController, NetworkRequesterDelegate {
         }
     }
     
+    private var _image: UIImage!
+    var followerImage: UIImage! {
+        get {
+            return self._image
+        }
+        set {
+            self._image = newValue
+        }
+    }
+    
     private var _follower: NSDictionary!
     var follower: NSDictionary {
         get {
@@ -48,6 +58,8 @@ class SingleFollowerViewController: UIViewController, NetworkRequesterDelegate {
         NetworkRequester.connection.delegate = self
         NetworkRequester.connection.getFollowerInfo(login: self.login)
         self.navigationController?.setNavigationBarHidden(true, animated: false)
+        self.bigImageView?.image = self.followerImage
+        self.smallImageView?.image = self.followerImage
     }
     
     @IBAction func backButtonPushed() {

@@ -51,6 +51,10 @@ class FollowerCollectionViewCell: UICollectionViewCell {
         layer?.render(in: UIGraphicsGetCurrentContext()!)
     }
     
+    func getFollowerImage() -> UIImage? {
+        return self.followerImageView?.image
+    }
+    
     override func prepareForReuse() {
         super.prepareForReuse()
         self.followerImageView?.image = nil
