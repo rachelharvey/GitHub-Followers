@@ -13,7 +13,7 @@ class FollowerCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var followerNameLabel: UILabel?
     
     private var _imageurl: String!
-    var imageUrl: String {
+    var avatarUrl: String {
         get {
             return self._imageurl
         }
@@ -22,12 +22,22 @@ class FollowerCollectionViewCell: UICollectionViewCell {
         }
     }
     
-    var followerName: String {
+    var login: String {
         get {
             return (self.followerNameLabel?.text)!
         }
         set {
             self.followerNameLabel?.text = newValue
+        }
+    }
+    
+    private var _followersurl: String!
+    var followersUrl: String {
+        get {
+            return self._followersurl
+        }
+        set {
+            self._followersurl = newValue
         }
     }
     

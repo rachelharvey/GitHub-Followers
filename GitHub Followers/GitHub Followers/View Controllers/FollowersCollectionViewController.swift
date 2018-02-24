@@ -35,7 +35,10 @@ class FollowersCollectionViewController: UICollectionViewController, UICollectio
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "followerCell", for: indexPath) as! FollowerCollectionViewCell
-        cell.followerName = "Rachel Harvey"
+        let dict = self.followersArray[indexPath.row] as! NSDictionary
+        cell.login = dict.value(forKey: "login") as! String
+        cell.avatarUrl = dict.value(forKey: "avatar_url") as! String
+        cell.followersUrl = dict.value(forKey: "followers_url") as! String
         return cell
     }
     

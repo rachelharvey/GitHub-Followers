@@ -64,7 +64,7 @@
 				A20A70D120409B13009C4836 /* Main.storyboard */,
 				A20A70E12040AF50009C4836 /* NetworkRequester.swift */,
 				A20A70E32040EA18009C4836 /* View Controllers */,
-				A20A70E72040EDE9009C4836 /* Custom Objects */,
+				A20A70E72040EDE9009C4836 /* Custom UIObjects */,
 				A20A70D420409B13009C4836 /* Assets.xcassets */,
 				A20A70D620409B13009C4836 /* LaunchScreen.storyboard */,
 				A20A70D920409B13009C4836 /* Info.plist */,
@@ -81,12 +81,12 @@
 			path = "View Controllers";
 			sourceTree = "<group>";
 		};
-		A20A70E72040EDE9009C4836 /* Custom Objects */ = {
+		A20A70E72040EDE9009C4836 /* Custom UIObjects */ = {
 			isa = PBXGroup;
 			children = (
 				A20A70E82040EE11009C4836 /* FollowerCollectionViewCell.swift */,
 			);
-			path = "Custom Objects";
+			path = "Custom UIObjects";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
