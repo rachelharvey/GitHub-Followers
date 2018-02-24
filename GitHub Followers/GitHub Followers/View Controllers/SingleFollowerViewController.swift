@@ -110,6 +110,10 @@ class SingleFollowerViewController: UIViewController, NetworkRequesterDelegate {
     }
     
     func requestError() {
-        print("Request Error")
+        let alert = UIAlertController(title: "Uh-oh!", message: "There was an eror getting the user's info. Please make sure device is connected to the internet.", preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "Try Again", style: UIAlertActionStyle.default, handler: { Void in
+                NetworkRequester.connection.getFollowerInfo(login: self.login)
+        }))
+        self.present(alert, animated: true, completion: nil)
     }
 }
