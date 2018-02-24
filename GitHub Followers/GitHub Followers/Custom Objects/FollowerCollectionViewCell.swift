@@ -9,5 +9,6 @@
 import UIKit
 
 class FollowerCollectionViewCell: UICollectionViewCell {
-    
+    @IBOutlet weak var followerImageView: UIImageView?
+    @IBOutlet weak var followerNameLabel: UILabel?
 }
