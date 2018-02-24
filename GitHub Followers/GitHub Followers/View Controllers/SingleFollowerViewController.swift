@@ -50,6 +50,14 @@ class SingleFollowerViewController: UIViewController, NetworkRequesterDelegate {
         set {
             self._follower = newValue
             print(newValue)
+            DispatchQueue.main.async {
+                self.nameLabel?.text = newValue.value(forKey: "name") as? String
+                self.followersNumberLabel?.text = "\(newValue.value(forKey: "followers") as! NSNumber)"
+                self.followingNumberLabel?.text = "\(newValue.value(forKey: "following") as! NSNumber)"
+                self.repositoriesNumberLabel?.text = "\(newValue.value(forKey: "public_repos") as! NSNumber)"
+                self.locationLabel?.text = newValue.value(forKey: "location") as? String
+                self.emailLabel?.text = newValue.value(forKey: "email") as? String
+            }
         }
     }
     
@@ -60,6 +68,7 @@ class SingleFollowerViewController: UIViewController, NetworkRequesterDelegate {
         self.navigationController?.setNavigationBarHidden(true, animated: false)
         self.bigImageView?.image = self.followerImage
         self.smallImageView?.image = self.followerImage
+        self.loginLabel?.text = self.login
     }
     
     @IBAction func backButtonPushed() {
