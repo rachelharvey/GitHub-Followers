@@ -87,6 +87,14 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </view>
                             </collectionViewCell>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="nz9-zU-kEF" customClass="FollowerCollectionViewCell" customModule="GitHub_Followers" customModuleProvider="target">
+                                <rect key="frame" x="65" y="0.0" width="50" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </view>
+                            </collectionViewCell>
                         </cells>
                         <connections>
                             <outlet property="dataSource" destination="aSk-nc-D3M" id="qOL-pt-Lrm"/>
