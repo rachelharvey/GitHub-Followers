@@ -46,13 +46,8 @@ class NetworkRequester {
         return json
     }
     
-    func getEncodedString(string: String) -> String {
-        let encoded = string.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlHostAllowed)
-        return encoded!
-    }
-    
     func getFollowers(username: String) {
-        let urlString = self.getEncodedString(string: "https://api.github.com/users/"+username+"/followers")
+        let urlString = "https://api.github.com/users/"+username+"/followers"
         if let url = URL(string: urlString) {
             let task = self.session.dataTask(with: url) {
                 data, response, error in
@@ -67,11 +62,13 @@ class NetworkRequester {
                 }
             }
             task.resume()
+        } else {
+            self.delegate?.requestError()
         }
     }
     
     func getFollowerCellImage(requestUrl: String, forCell cell:FollowerCollectionViewCell) {
-        if let url = URL(string: self.getEncodedString(string: requestUrl)) {
+        if let url = URL(string: requestUrl) {
             let task = self.session.dataTask(with: url) {
                 data, response, error in
                 if let HTTPResponse = response as? HTTPURLResponse {
@@ -96,7 +93,7 @@ class NetworkRequester {
     }
     
     func getFollowerInfo(login: String) {
-        let urlString = self.getEncodedString(string: "https://api.github.com/users/"+login)
+        let urlString = "https://api.github.com/users/"+login
         if let url = URL(string: urlString) {
             let task = self.session.dataTask(with: url) {
                 data, response, error in
@@ -111,6 +108,8 @@ class NetworkRequester {
                 }
             }
             task.resume()
+        } else {
+            self.delegate?.requestError()
         }
     }
 }
