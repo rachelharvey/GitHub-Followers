@@ -36,7 +36,8 @@ class SingleFollowerViewController: UIViewController, NetworkRequesterDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         NetworkRequester.connection.delegate = self
-        NetworkRequester.connection.getFollowerInfo(login: self.login)
+        //NetworkRequester.connection.getFollowerInfo(login: self.login)
+        self.navigationController?.setNavigationBarHidden(true, animated: false)
     }
     
     //----------NetworkRequesterDelegate----------
