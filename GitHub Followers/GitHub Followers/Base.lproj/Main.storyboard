@@ -303,9 +303,11 @@
                     </view>
                     <connections>
                         <outlet property="bigImageView" destination="wlD-pw-lZc" id="Ddf-qo-wWg"/>
+                        <outlet property="emailImageView" destination="Bbj-4B-zym" id="z4p-XQ-Lbo"/>
                         <outlet property="emailLabel" destination="oSD-HA-IE4" id="4cD-L9-0ic"/>
                         <outlet property="followersNumberLabel" destination="piR-cP-5hf" id="ZDP-bR-7IR"/>
                         <outlet property="followingNumberLabel" destination="oxq-xl-3tB" id="2Fd-J3-N3K"/>
+                        <outlet property="locationImageView" destination="MrU-pO-3q7" id="fOi-DJ-55W"/>
                         <outlet property="locationLabel" destination="zea-bS-f7h" id="9VP-sp-X0q"/>
                         <outlet property="loginLabel" destination="Zj6-f3-IiK" id="sGA-v8-8Ry"/>
                         <outlet property="nameLabel" destination="HYR-yr-wsV" id="YMg-4Z-4xt"/>

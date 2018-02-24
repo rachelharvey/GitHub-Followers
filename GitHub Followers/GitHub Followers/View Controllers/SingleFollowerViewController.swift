@@ -17,7 +17,9 @@ class SingleFollowerViewController: UIViewController, NetworkRequesterDelegate {
     @IBOutlet weak var followersNumberLabel: UILabel?
     @IBOutlet weak var followingNumberLabel: UILabel?
     @IBOutlet weak var repositoriesNumberLabel: UILabel?
+    @IBOutlet weak var locationImageView: UIImageView?
     @IBOutlet weak var locationLabel: UILabel?
+    @IBOutlet weak var emailImageView: UIImageView?
     @IBOutlet weak var emailLabel: UILabel?
     
     private var _login: String!
@@ -55,8 +57,18 @@ class SingleFollowerViewController: UIViewController, NetworkRequesterDelegate {
                 self.followersNumberLabel?.text = "\(newValue.value(forKey: "followers") as! NSNumber)"
                 self.followingNumberLabel?.text = "\(newValue.value(forKey: "following") as! NSNumber)"
                 self.repositoriesNumberLabel?.text = "\(newValue.value(forKey: "public_repos") as! NSNumber)"
-                self.locationLabel?.text = newValue.value(forKey: "location") as? String
-                self.emailLabel?.text = newValue.value(forKey: "email") as? String
+                if let location = newValue.value(forKey: "location") as? String {
+                    self.locationLabel?.text = location
+                } else {
+                    self.locationLabel?.isHidden = true
+                    self.locationImageView?.isHidden = true
+                }
+                if let email = newValue.value(forKey: "email") as? String {
+                    self.emailLabel?.text = email
+                } else {
+                    self.emailLabel?.isHidden = true
+                    self.emailImageView?.isHidden = true
+                }
             }
         }
     }
