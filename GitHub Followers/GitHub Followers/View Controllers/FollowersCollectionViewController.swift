@@ -54,7 +54,6 @@ class FollowersCollectionViewController: UICollectionViewController, UICollectio
         let dict = self.followersArray[indexPath.row] as! NSDictionary
         cell.login = dict.value(forKey: "login") as! String
         cell.avatarUrl = dict.value(forKey: "avatar_url") as! String
-        cell.followersUrl = dict.value(forKey: "followers_url") as! String
         return cell
     }
     
@@ -64,14 +63,17 @@ class FollowersCollectionViewController: UICollectionViewController, UICollectio
     
     //----------NetworkRequesterDelegate----------
     
-    func followerCellImageLoaded(image: UIImage, forCell cell: FollowerCollectionViewCell, url: String) {
+    func followerCellImageLoaded(image: UIImage, forCell cell: FollowerCollectionViewCell) {
         DispatchQueue.main.async {
             cell.setFollowerImage(image: image)
         }
     }
     
-    func requestError() {
-        print("There was an error getting an image")
+    func imageRequestError(forCell cell: FollowerCollectionViewCell) {
+        let noImage = UIImage(named: "nopicture")
+        DispatchQueue.main.async {
+            cell.setFollowerImage(image: noImage!)
+        }
     }
     
 }
