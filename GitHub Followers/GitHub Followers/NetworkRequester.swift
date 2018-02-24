@@ -54,17 +54,17 @@ class NetworkRequester {
                 data, response, error in
                 if (error == nil) {
                     if let jsonArray = self.serializeJSON(data: data! as NSData) {
-                        self.delegate?.followersRecieved!(array: jsonArray)
+                        self.delegate?.followersRecieved?(array: jsonArray)
                     } else {
-                        self.delegate?.requestError!()
+                        self.delegate?.requestError?()
                     }
                 } else {
-                    self.delegate?.requestError!()
+                    self.delegate?.requestError?()
                 }
             }
             task.resume()
         } else {
-            self.delegate?.requestError!()
+            self.delegate?.requestError?()
         }
     }
     
@@ -76,20 +76,20 @@ class NetworkRequester {
                     let statusCode = HTTPResponse.statusCode
                     if (statusCode == 200 && error == nil && data != nil){
                         if let image = UIImage(data: data!) {
-                            self.delegate?.followerCellImageLoaded!(image: image, forCell: cell)
+                            self.delegate?.followerCellImageLoaded?(image: image, forCell: cell)
                         } else {
-                            self.delegate?.imageRequestError!(forCell: cell)
+                            self.delegate?.imageRequestError?(forCell: cell)
                         }
                     } else {
-                        self.delegate?.imageRequestError!(forCell: cell)
+                        self.delegate?.imageRequestError?(forCell: cell)
                     }
                 } else {
-                    self.delegate?.imageRequestError!(forCell: cell)
+                    self.delegate?.imageRequestError?(forCell: cell)
                 }
             }
             task.resume()
         } else {
-            self.delegate?.requestError!()
+            self.delegate?.imageRequestError?(forCell: cell)
         }
     }
     
@@ -100,17 +100,17 @@ class NetworkRequester {
                 data, response, error in
                 if (error == nil) {
                     if let jsonDictionary = self.serializeDictionary(data: data! as NSData) {
-                        self.delegate?.followerInfoRecieved!(dictionary: jsonDictionary)
+                        self.delegate?.followerInfoRecieved?(dictionary: jsonDictionary)
                     } else {
-                        self.delegate?.requestError!()
+                        self.delegate?.requestError?()
                     }
                 } else {
-                    self.delegate?.requestError!()
+                    self.delegate?.requestError?()
                 }
             }
             task.resume()
         } else {
-            self.delegate?.requestError!()
+            self.delegate?.requestError?()
         }
     }
 }
