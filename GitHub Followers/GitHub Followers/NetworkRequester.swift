@@ -6,10 +6,11 @@
 //  Copyright © 2018 Rachel Harvey. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 @objc protocol NetworkRequesterDelegate {
-    func followersRecieved(array: NSArray)
+    @objc optional func followersRecieved(array: NSArray)
+    @objc optional func followerCellImageLoaded(image: UIImage, forCell cell: FollowerCollectionViewCell, url: String)
     func requestError()
 }
 
@@ -41,7 +42,7 @@ class NetworkRequester {
                 data, response, error in
                 if (error == nil) {
                     if let jsonArray = self.serializeJSON(data: data! as NSData) {
-                        self.delegate?.followersRecieved(array: jsonArray)
+                        self.delegate?.followersRecieved!(array: jsonArray)
                     } else {
                         self.delegate?.requestError()
                     }
@@ -50,6 +51,31 @@ class NetworkRequester {
                 }
             }
             task.resume()
+        }
+    }
+    
+    func getFollowerCellImage(requestUrl: String, forCell cell:FollowerCollectionViewCell) {
+        if let url = URL(string: requestUrl) {
+            let task = self.session.dataTask(with: url) {
+                data, response, error in
+                if let HTTPResponse = response as? HTTPURLResponse {
+                    let statusCode = HTTPResponse.statusCode
+                    if (statusCode == 200 && error == nil && data != nil){
+                        if let image = UIImage(data: data!) {
+                            self.delegate?.followerCellImageLoaded!(image: image, forCell: cell, url: requestUrl)
+                        } else {
+                            self.delegate?.requestError()
+                        }
+                    } else {
+                        self.delegate?.requestError()
+                    }
+                } else {
+                    self.delegate?.requestError()
+                }
+            }
+            task.resume()
+        } else {
+            self.delegate?.requestError()
         }
     }
 }

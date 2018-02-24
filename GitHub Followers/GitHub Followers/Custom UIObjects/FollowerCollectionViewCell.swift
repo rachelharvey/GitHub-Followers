@@ -19,6 +19,7 @@ class FollowerCollectionViewCell: UICollectionViewCell {
         }
         set {
             self._imageurl = newValue
+            NetworkRequester.connection.getFollowerCellImage(requestUrl: self._imageurl, forCell: self)
         }
     }
     
@@ -39,6 +40,10 @@ class FollowerCollectionViewCell: UICollectionViewCell {
         set {
             self._followersurl = newValue
         }
+    }
+    
+    func setFollowerImage(image: UIImage) {
+        self.followerImageView?.image = image
     }
     
     override func prepareForReuse() {

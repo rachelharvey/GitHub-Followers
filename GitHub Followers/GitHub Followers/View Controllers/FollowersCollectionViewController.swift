@@ -8,13 +8,14 @@
 
 import UIKit
 
-class FollowersCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
+class FollowersCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout, NetworkRequesterDelegate {
     
     var followersArray: NSArray!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.collectionView?.delegate = self
+        NetworkRequester.connection.delegate = self
     }
     
     //----------UICollectionView----------
@@ -40,6 +41,18 @@ class FollowersCollectionViewController: UICollectionViewController, UICollectio
         cell.avatarUrl = dict.value(forKey: "avatar_url") as! String
         cell.followersUrl = dict.value(forKey: "followers_url") as! String
         return cell
+    }
+    
+    //----------NetworkRequesterDelegate----------
+    
+    func followerCellImageLoaded(image: UIImage, forCell cell: FollowerCollectionViewCell, url: String) {
+        DispatchQueue.main.async {
+            cell.setFollowerImage(image: image)
+        }
+    }
+    
+    func requestError() {
+        print("There was an error getting an image")
     }
     
 }
