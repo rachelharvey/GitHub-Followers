@@ -31,4 +31,10 @@ class FollowerCollectionViewCell: UICollectionViewCell {
         }
     }
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        self.followerImageView?.image = nil
+        self.followerNameLabel?.text = ""
+    }
+    
 }
