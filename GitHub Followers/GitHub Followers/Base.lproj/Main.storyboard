@@ -326,6 +326,7 @@
                         <outlet property="locationLabel" destination="zea-bS-f7h" id="9VP-sp-X0q"/>
                         <outlet property="loginLabel" destination="Zj6-f3-IiK" id="sGA-v8-8Ry"/>
                         <outlet property="nameLabel" destination="HYR-yr-wsV" id="YMg-4Z-4xt"/>
+                        <outlet property="profileButton" destination="1v8-sj-Tz3" id="kD6-If-jRv"/>
                         <outlet property="repositoriesNumberLabel" destination="E1g-40-IJQ" id="dxR-vp-9wy"/>
                         <outlet property="smallImageView" destination="oq6-F7-BkE" id="iwP-qn-GTV"/>
                     </connections>

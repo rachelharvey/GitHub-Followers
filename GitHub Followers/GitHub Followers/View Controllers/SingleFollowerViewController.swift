@@ -10,6 +10,7 @@ import UIKit
 
 class SingleFollowerViewController: UIViewController, NetworkRequesterDelegate {
     
+    @IBOutlet weak var profileButton: UIButton?
     @IBOutlet weak var bigImageView: UIImageView?
     @IBOutlet weak var smallImageView: UIImageView?
     @IBOutlet weak var loginLabel: UILabel?
@@ -59,10 +60,12 @@ class SingleFollowerViewController: UIViewController, NetworkRequesterDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        NetworkRequester.connection.delegate = self
         self.navigationController?.setNavigationBarHidden(true, animated: false)
         self.loginLabel?.text = self.login
         self.bigImageView?.image = self.followerImage
         self.setSmallImage()
+        self.profileButton?.layer.cornerRadius = 10
     }
     
     func setSmallImage() {
