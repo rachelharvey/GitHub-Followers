@@ -23,7 +23,9 @@ class UsernameSearchViewController: UIViewController,UITextFieldDelegate,Network
             self._status = newValue
             DispatchQueue.main.async {
                 self.statusLabel?.text = self.status
-                self.performSegue(withIdentifier: "followersFoundSegue", sender: self)
+                if newValue == self.successText {
+                    self.performSegue(withIdentifier: "followersFoundSegue", sender: self)
+                }
             }
         }
     }
