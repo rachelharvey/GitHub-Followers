@@ -133,7 +133,7 @@
                     </collectionView>
                     <navigationItem key="navigationItem" title="Title" id="Ejv-9i-LJL"/>
                     <connections>
-                        <segue destination="sgy-lV-kPS" kind="show" id="Urs-Bs-JTB"/>
+                        <segue destination="sgy-lV-kPS" kind="show" identifier="followerSelected" id="Urs-Bs-JTB"/>
                     </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fn5-tk-WtT" userLabel="First Responder" sceneMemberID="firstResponder"/>

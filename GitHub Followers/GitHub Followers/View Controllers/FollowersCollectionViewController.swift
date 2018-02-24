@@ -19,6 +19,13 @@ class FollowersCollectionViewController: UICollectionViewController, UICollectio
         self.title = "Followers"
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "followerSelected" {
+            let vc = segue.destination as! SingleFollowerViewController
+            vc.login = (sender as! FollowerCollectionViewCell).login
+        }
+    }
+    
     //----------UICollectionView----------
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -42,6 +49,10 @@ class FollowersCollectionViewController: UICollectionViewController, UICollectio
         cell.avatarUrl = dict.value(forKey: "avatar_url") as! String
         cell.followersUrl = dict.value(forKey: "followers_url") as! String
         return cell
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        self.performSegue(withIdentifier: "followerSelected", sender: collectionView.cellForItem(at: indexPath))
     }
     
     //----------NetworkRequesterDelegate----------
