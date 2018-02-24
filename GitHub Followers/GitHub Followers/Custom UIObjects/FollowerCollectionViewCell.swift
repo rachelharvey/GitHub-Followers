@@ -44,6 +44,11 @@ class FollowerCollectionViewCell: UICollectionViewCell {
     
     func setFollowerImage(image: UIImage) {
         self.followerImageView?.image = image
+        let layer = self.followerImageView?.layer
+        layer?.masksToBounds = true
+        layer?.cornerRadius = (self.followerImageView?.frame.size.height)!/2
+        UIGraphicsBeginImageContext((self.followerImageView?.bounds.size)!)
+        layer?.render(in: UIGraphicsGetCurrentContext()!)
     }
     
     override func prepareForReuse() {
