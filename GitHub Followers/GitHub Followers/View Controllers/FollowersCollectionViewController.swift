@@ -22,6 +22,7 @@ class FollowersCollectionViewController: UICollectionViewController, UICollectio
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(false, animated: false)
+        NetworkRequester.connection.delegate = self
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -30,6 +31,7 @@ class FollowersCollectionViewController: UICollectionViewController, UICollectio
             let cell = sender as! FollowerCollectionViewCell
             vc.login = cell.login
             vc.followerImage = cell.getFollowerImage()
+            vc.cellImageWasFound = cell.imageFound
         }
     }
     
@@ -52,9 +54,11 @@ class FollowersCollectionViewController: UICollectionViewController, UICollectio
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "followerCell", for: indexPath) as! FollowerCollectionViewCell
         let dict = self.followersArray[indexPath.row] as! NSDictionary
+        let noImage = UIImage(named: "nopicture")
+        cell.setFollowerImage(image: noImage!)
+        cell.imageFound = false
         cell.login = dict.value(forKey: "login") as! String
         cell.avatarUrl = dict.value(forKey: "avatar_url") as! String
-        cell.followersUrl = dict.value(forKey: "followers_url") as! String
         return cell
     }
     
@@ -64,14 +68,19 @@ class FollowersCollectionViewController: UICollectionViewController, UICollectio
     
     //----------NetworkRequesterDelegate----------
     
-    func followerCellImageLoaded(image: UIImage, forCell cell: FollowerCollectionViewCell, url: String) {
+    func followerCellImageLoaded(image: UIImage, forCell cell: FollowerCollectionViewCell) {
         DispatchQueue.main.async {
             cell.setFollowerImage(image: image)
+            cell.imageFound = true
         }
     }
     
-    func requestError() {
-        print("There was an error getting an image")
+    func imageRequestError(forCell cell: FollowerCollectionViewCell) {
+        let noImage = UIImage(named: "nopicture")
+        DispatchQueue.main.async {
+            cell.setFollowerImage(image: noImage!)
+            cell.imageFound = false
+        }
     }
     
 }

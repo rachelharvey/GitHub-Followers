@@ -45,6 +45,7 @@ class SingleFollowerViewController: UIViewController, NetworkRequesterDelegate {
             self._image = newValue
         }
     }
+    var cellImageWasFound = false
     
     private var _follower: NSDictionary!
     var follower: NSDictionary {
@@ -52,6 +53,7 @@ class SingleFollowerViewController: UIViewController, NetworkRequesterDelegate {
             return self._follower
         }
         set {
+            print(newValue)
             self._follower = newValue
             self.setFollowerDataLabels()
             
@@ -63,12 +65,12 @@ class SingleFollowerViewController: UIViewController, NetworkRequesterDelegate {
         NetworkRequester.connection.delegate = self
         self.navigationController?.setNavigationBarHidden(true, animated: false)
         self.loginLabel?.text = self.login
-        self.bigImageView?.image = self.followerImage
-        self.setSmallImage()
+        self.setImages()
         self.profileButton?.layer.cornerRadius = 10
     }
     
-    func setSmallImage() {
+    func setImages() {
+        self.bigImageView?.image = self.followerImage
         self.smallImageView?.image = self.followerImage
         let layer = self.smallImageView?.layer
         layer?.masksToBounds = true
@@ -95,6 +97,21 @@ class SingleFollowerViewController: UIViewController, NetworkRequesterDelegate {
             self.emailImageView?.isHidden = true
         }
         self.htmlUrl = self.follower.value(forKey: "html_url") as? String
+        if !self.cellImageWasFound {
+            if let imageURL = URL(string:self.follower.value(forKey: "avatar_url") as! String) {
+                var imageData: Data!
+                do {
+                    imageData = try Data(contentsOf: imageURL)
+                    
+                } catch {
+                    // do nothing
+                }
+                if let image = UIImage(data: imageData) {
+                    self.followerImage = image
+                    self.setImages()
+                }
+            }
+        }
     }
     
     @IBAction func backButtonPushed() {
