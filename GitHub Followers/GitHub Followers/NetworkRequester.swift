@@ -41,7 +41,6 @@ class NetworkRequester {
                 data, response, error in
                 if (error == nil) {
                     if let jsonArray = self.serializeJSON(data: data! as NSData) {
-                        print(jsonArray)
                         self.delegate?.followersRecieved(array: jsonArray)
                     } else {
                         self.delegate?.requestError()

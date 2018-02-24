@@ -8,13 +8,35 @@
 
 import UIKit
 
-class FollowersCollectionViewController: UICollectionViewController {
+class FollowersCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
     var followersArray: NSArray!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(self.followersArray)
+        self.collectionView?.delegate = self
+    }
+    
+    //----------UICollectionView----------
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let collectionViewWidth = collectionView.frame.size.width
+        let size = collectionViewWidth*0.3
+        return CGSize(width: size, height: size)
+    }
+    
+    override func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return self.followersArray.count
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "followerCell", for: indexPath) as! FollowerCollectionViewCell
+        cell.followerName = "Rachel Harvey"
+        return cell
     }
     
 }
