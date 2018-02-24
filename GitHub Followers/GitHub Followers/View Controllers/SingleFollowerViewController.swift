@@ -79,7 +79,14 @@ class SingleFollowerViewController: UIViewController, NetworkRequesterDelegate {
         NetworkRequester.connection.getFollowerInfo(login: self.login)
         self.navigationController?.setNavigationBarHidden(true, animated: false)
         self.bigImageView?.image = self.followerImage
+        
         self.smallImageView?.image = self.followerImage
+        let layer = self.smallImageView?.layer
+        layer?.masksToBounds = true
+        layer?.cornerRadius = (self.smallImageView?.frame.size.height)!/2
+        UIGraphicsBeginImageContext((self.smallImageView?.bounds.size)!)
+        layer?.render(in: UIGraphicsGetCurrentContext()!)
+        
         self.loginLabel?.text = self.login
     }
     
