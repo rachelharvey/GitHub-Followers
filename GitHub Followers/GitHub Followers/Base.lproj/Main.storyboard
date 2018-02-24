@@ -57,7 +57,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="statusLabel" destination="Oax-pj-s5V" id="Gqx-q7-Rga"/>
-                        <segue destination="aSk-nc-D3M" kind="show" id="GNG-P5-ftt"/>
+                        <segue destination="aSk-nc-D3M" kind="show" identifier="followersFoundSegue" id="GNG-P5-ftt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mtr-pn-gsB" userLabel="First Responder" sceneMemberID="firstResponder"/>

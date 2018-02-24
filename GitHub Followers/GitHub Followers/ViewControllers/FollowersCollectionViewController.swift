@@ -10,4 +10,11 @@ import UIKit
 
 class FollowersCollectionViewController: UICollectionViewController {
     
+    var followersArray: NSArray!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        print(self.followersArray)
+    }
+    
 }

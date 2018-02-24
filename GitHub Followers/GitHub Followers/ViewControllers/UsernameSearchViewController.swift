@@ -20,13 +20,15 @@ class UsernameSearchViewController: UIViewController,UITextFieldDelegate,Network
             return self._status
         }
         set {
-            print(newValue)
             self._status = newValue
             DispatchQueue.main.async {
                 self.statusLabel?.text = self.status
+                self.performSegue(withIdentifier: "followersFoundSegue", sender: self)
             }
         }
     }
+    
+    var followersArray: NSArray!
     
     let defaultText = "Type a GitHub username in the search bar to see that user's followers!"
     let connectingText = "Please wait a moment while we look for the user's followers..."
@@ -88,11 +90,18 @@ class UsernameSearchViewController: UIViewController,UITextFieldDelegate,Network
         self.usernameTextField.text = ""
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "followersFoundSegue" {
+            let vc = segue.destination as! FollowersCollectionViewController
+            vc.followersArray = self.followersArray
+        }
+    }
+    
     //----------NetworkRequesterDelegate----------
     
     func followersRecieved(array: NSArray) {
+        self.followersArray = array
         self.status = self.successText
-        print(array)
     }
     
     func requestError() {
