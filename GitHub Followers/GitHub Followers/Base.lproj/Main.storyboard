@@ -34,18 +34,29 @@
                     <view key="view" contentMode="scaleToFill" id="Wqb-cP-tHG">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oax-pj-s5V">
+                                <rect key="frame" x="16" y="84" width="343" height="499"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Oax-pj-s5V" firstAttribute="leading" secondItem="R9e-Te-886" secondAttribute="leading" constant="16" id="Tkl-Tc-UqW"/>
+                            <constraint firstItem="Oax-pj-s5V" firstAttribute="centerX" secondItem="Wqb-cP-tHG" secondAttribute="centerX" id="Vr1-Ex-fLk"/>
+                            <constraint firstItem="Oax-pj-s5V" firstAttribute="centerY" secondItem="Wqb-cP-tHG" secondAttribute="centerY" id="i11-ao-JhT"/>
+                            <constraint firstItem="Oax-pj-s5V" firstAttribute="top" secondItem="R9e-Te-886" secondAttribute="top" constant="20" id="nSE-8J-O8j"/>
+                            <constraint firstItem="R9e-Te-886" firstAttribute="trailing" secondItem="Oax-pj-s5V" secondAttribute="trailing" constant="16" id="tii-0h-rIq"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="R9e-Te-886"/>
                     </view>
                     <navigationItem key="navigationItem" id="MvB-Rm-1t6">
                         <nil key="title"/>
-                        <barButtonItem key="rightBarButtonItem" title="Cancel" id="VJm-fg-Kt2">
-                            <connections>
-                                <action selector="cancelSearch:" destination="J46-sC-Had" id="zml-CB-CdR"/>
-                            </connections>
-                        </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="statusLabel" destination="Oax-pj-s5V" id="Gqx-q7-Rga"/>
                         <segue destination="aSk-nc-D3M" kind="show" id="GNG-P5-ftt"/>
                     </connections>
                 </viewController>
