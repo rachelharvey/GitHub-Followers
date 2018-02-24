@@ -22,6 +22,7 @@ class FollowerCollectionViewCell: UICollectionViewCell {
             NetworkRequester.connection.getFollowerCellImage(requestUrl: self._imageurl, forCell: self)
         }
     }
+    var imageFound = false
     
     var login: String {
         get {
