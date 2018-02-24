@@ -21,6 +21,7 @@ class SingleFollowerViewController: UIViewController, NetworkRequesterDelegate {
     @IBOutlet weak var locationLabel: UILabel?
     @IBOutlet weak var emailImageView: UIImageView?
     @IBOutlet weak var emailLabel: UILabel?
+    var htmlUrl: String!
     
     private var _login: String!
     var login: String {
@@ -57,23 +58,23 @@ class SingleFollowerViewController: UIViewController, NetworkRequesterDelegate {
         }
     }
     
-    var htmlUrl: String!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         NetworkRequester.connection.delegate = self
         NetworkRequester.connection.getFollowerInfo(login: self.login)
         self.navigationController?.setNavigationBarHidden(true, animated: false)
         self.bigImageView?.image = self.followerImage
-        
+        self.setSmallImage()
+        self.loginLabel?.text = self.login
+    }
+    
+    func setSmallImage() {
         self.smallImageView?.image = self.followerImage
         let layer = self.smallImageView?.layer
         layer?.masksToBounds = true
         layer?.cornerRadius = (self.smallImageView?.frame.size.height)!/2
         UIGraphicsBeginImageContext((self.smallImageView?.bounds.size)!)
         layer?.render(in: UIGraphicsGetCurrentContext()!)
-        
-        self.loginLabel?.text = self.login
     }
     
     func setFollowerDataLabels() {
