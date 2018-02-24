@@ -22,6 +22,7 @@ class FollowersCollectionViewController: UICollectionViewController, UICollectio
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(false, animated: false)
+        NetworkRequester.connection.delegate = self
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
