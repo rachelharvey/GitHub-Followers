@@ -31,6 +31,7 @@ class FollowersCollectionViewController: UICollectionViewController, UICollectio
             let cell = sender as! FollowerCollectionViewCell
             vc.login = cell.login
             vc.followerImage = cell.getFollowerImage()
+            vc.cellImageWasFound = cell.imageFound
         }
     }
     
@@ -53,6 +54,9 @@ class FollowersCollectionViewController: UICollectionViewController, UICollectio
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "followerCell", for: indexPath) as! FollowerCollectionViewCell
         let dict = self.followersArray[indexPath.row] as! NSDictionary
+        let noImage = UIImage(named: "nopicture")
+        cell.setFollowerImage(image: noImage!)
+        cell.imageFound = false
         cell.login = dict.value(forKey: "login") as! String
         cell.avatarUrl = dict.value(forKey: "avatar_url") as! String
         return cell
@@ -67,6 +71,7 @@ class FollowersCollectionViewController: UICollectionViewController, UICollectio
     func followerCellImageLoaded(image: UIImage, forCell cell: FollowerCollectionViewCell) {
         DispatchQueue.main.async {
             cell.setFollowerImage(image: image)
+            cell.imageFound = true
         }
     }
     
@@ -74,6 +79,7 @@ class FollowersCollectionViewController: UICollectionViewController, UICollectio
         let noImage = UIImage(named: "nopicture")
         DispatchQueue.main.async {
             cell.setFollowerImage(image: noImage!)
+            cell.imageFound = false
         }
     }
     
