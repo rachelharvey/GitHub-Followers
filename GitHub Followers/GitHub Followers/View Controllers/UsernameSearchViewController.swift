@@ -46,6 +46,7 @@ class UsernameSearchViewController: UIViewController,UITextFieldDelegate,Network
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(false, animated: false)
+        NetworkRequester.connection.delegate = self
     }
     
     func addSearchBarButtonItems() {
