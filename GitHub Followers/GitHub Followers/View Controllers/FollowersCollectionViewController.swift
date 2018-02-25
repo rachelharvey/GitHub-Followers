@@ -21,7 +21,9 @@ class FollowersCollectionViewController: UICollectionViewController, UICollectio
         }
         set {
             self.array = newValue
-            
+            if self.array.count < 99 {
+                self.gotAllFollowers = true
+            }
         }
     }
     
