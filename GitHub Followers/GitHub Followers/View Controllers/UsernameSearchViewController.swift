@@ -88,7 +88,7 @@ class UsernameSearchViewController: UIViewController,UITextFieldDelegate,Network
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if let username = self.usernameTextField.text {
             self.statusLabel?.text = self.connectingText
-            NetworkRequester.connection.getFollowers(username: username)
+            NetworkRequester.connection.getFollowers(username: username, page: "1")
         }
         textField.resignFirstResponder()
         return true
