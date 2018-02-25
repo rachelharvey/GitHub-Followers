@@ -136,11 +136,12 @@
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="See more..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kKe-Vy-hNL">
                                             <rect key="frame" x="21.5" y="52" width="87" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                 </view>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="kKe-Vy-hNL" firstAttribute="centerY" secondItem="scm-zx-IL2" secondAttribute="centerY" id="IKW-zZ-F8R"/>
                                     <constraint firstItem="kKe-Vy-hNL" firstAttribute="centerX" secondItem="scm-zx-IL2" secondAttribute="centerX" id="pa1-Yz-ym4"/>

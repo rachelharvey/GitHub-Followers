@@ -103,6 +103,7 @@ class UsernameSearchViewController: UIViewController,UITextFieldDelegate,Network
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "followersFoundSegue" {
             let vc = segue.destination as! FollowersCollectionViewController
+            vc.username = self.usernameTextField.text
             vc.followersArray = self.followersArray
         }
     }

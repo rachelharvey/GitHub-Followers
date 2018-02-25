@@ -9,8 +9,21 @@
 import UIKit
 
 class FollowersCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout, NetworkRequesterDelegate {
+    var username: String!
     
-    var followersArray: NSArray!
+    var followersPage: Int = 2
+    var gotAllFollowers: Bool = false
+    
+    private var array: NSArray!
+    var followersArray: NSArray! {
+        get {
+            return self.array
+        }
+        set {
+            self.array = newValue
+            
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,6 +66,9 @@ class FollowersCollectionViewController: UICollectionViewController, UICollectio
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        if self.gotAllFollowers {
+            return self.followersArray.count
+        }
         return self.followersArray.count + 1
     }
     
@@ -73,14 +89,31 @@ class FollowersCollectionViewController: UICollectionViewController, UICollectio
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if indexPath.row == followersArray.count {
-            // request more users
+        if let followerCell = collectionView.cellForItem(at: indexPath) as? FollowerCollectionViewCell {
+            self.performSegue(withIdentifier: "followerSelected", sender: followerCell)
         } else {
-            self.performSegue(withIdentifier: "followerSelected", sender: collectionView.cellForItem(at: indexPath))
+            NetworkRequester.connection.getFollowers(username: self.username, page: String(self.followersPage))
         }
     }
     
     //----------NetworkRequesterDelegate----------
+    
+    func followersRecieved(array: NSArray) {
+        if array.count > 0 {
+            if array.count < 99 {
+                self.gotAllFollowers = true
+            } else {
+                self.followersPage+=1
+            }
+            let newArray = NSArray(array: Array(self.followersArray) + Array(array), copyItems: false)
+            self.followersArray = newArray
+        } else {
+            self.gotAllFollowers = true
+        }
+        DispatchQueue.main.async {
+            self.collectionView?.reloadData()
+        }
+    }
     
     func followerCellImageLoaded(image: UIImage, forCell cell: FollowerCollectionViewCell) {
         DispatchQueue.main.async {
