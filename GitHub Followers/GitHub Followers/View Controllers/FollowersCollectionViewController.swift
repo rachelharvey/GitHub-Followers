@@ -118,10 +118,8 @@ class FollowersCollectionViewController: UICollectionViewController, UICollectio
     }
     
     func requestError() {
-        let alert = UIAlertController(title: "Uh-oh!", message: "There was an eror getting more followers. Please make sure device is connected to the internet.", preferredStyle: UIAlertControllerStyle.alert)
-        alert.addAction(UIAlertAction(title: "Try Again", style: UIAlertActionStyle.default, handler: { Void in
-            NetworkRequester.connection.getFollowers(username: self.username, page: String(self.followersPage))
-        }))
+        let alert = UIAlertController(title: "Uh-oh!", message: "There was an eror getting more followers. Please make sure device is connected to the internet before trying again.", preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "Okay", style: UIAlertActionStyle.default, handler: nil))
         self.present(alert, animated: true, completion: nil)
     }
     
