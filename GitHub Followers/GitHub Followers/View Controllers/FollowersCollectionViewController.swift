@@ -117,6 +117,14 @@ class FollowersCollectionViewController: UICollectionViewController, UICollectio
         }
     }
     
+    func requestError() {
+        let alert = UIAlertController(title: "Uh-oh!", message: "There was an eror getting more followers. Please make sure device is connected to the internet.", preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "Try Again", style: UIAlertActionStyle.default, handler: { Void in
+            NetworkRequester.connection.getFollowers(username: self.username, page: String(self.followersPage))
+        }))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
     func followerCellImageLoaded(image: UIImage, forCell cell: FollowerCollectionViewCell) {
         DispatchQueue.main.async {
             cell.setFollowerImage(image: image)
