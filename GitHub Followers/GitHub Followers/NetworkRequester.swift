@@ -48,7 +48,7 @@ class NetworkRequester {
     }
     
     func getFollowers(username: String, page: String) {
-        let urlString = "https://api.github.com/users/"+username+"/followers?per_page=99&page="+page
+        let urlString = "https://api.github.com/users/"+username+"/followers?per_page=18&page="+page
         if let url = URL(string: urlString) {
             let task = self.session.dataTask(with: url) {
                 data, response, error in

@@ -21,7 +21,7 @@ class FollowersCollectionViewController: UICollectionViewController, UICollectio
         }
         set {
             self.array = newValue
-            if self.array.count < 99 {
+            if self.array.count < 18 {
                 self.gotAllFollowers = true
             }
         }
@@ -102,7 +102,7 @@ class FollowersCollectionViewController: UICollectionViewController, UICollectio
     
     func followersRecieved(array: NSArray) {
         if array.count > 0 {
-            if array.count < 99 {
+            if array.count < 18 {
                 self.gotAllFollowers = true
             } else {
                 self.followersPage+=1
