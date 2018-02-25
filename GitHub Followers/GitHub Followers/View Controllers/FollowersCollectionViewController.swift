@@ -38,9 +38,14 @@ class FollowersCollectionViewController: UICollectionViewController, UICollectio
     //----------UICollectionView----------
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let collectionViewWidth = collectionView.frame.size.width
-        let size = collectionViewWidth*0.3
-        return CGSize(width: size, height: size)
+        if indexPath.row == self.followersArray.count {
+            let collectionViewWidth = collectionView.frame.size.width
+            return CGSize(width: collectionViewWidth, height: collectionViewWidth/3)
+        } else {
+            let collectionViewWidth = collectionView.frame.size.width
+            let size = collectionViewWidth*0.3
+            return CGSize(width: size, height: size)
+        }
     }
     
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -48,22 +53,31 @@ class FollowersCollectionViewController: UICollectionViewController, UICollectio
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.followersArray.count
+        return self.followersArray.count + 1
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "followerCell", for: indexPath) as! FollowerCollectionViewCell
-        let dict = self.followersArray[indexPath.row] as! NSDictionary
-        let noImage = UIImage(named: "nopicture")
-        cell.setFollowerImage(image: noImage!)
-        cell.imageFound = false
-        cell.login = dict.value(forKey: "login") as! String
-        cell.avatarUrl = dict.value(forKey: "avatar_url") as! String
-        return cell
+        if indexPath.row == followersArray.count {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "seeMoreCell", for: indexPath)
+            return cell
+        } else {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "followerCell", for: indexPath) as! FollowerCollectionViewCell
+            let dict = self.followersArray[indexPath.row] as! NSDictionary
+            let noImage = UIImage(named: "nopicture")
+            cell.setFollowerImage(image: noImage!)
+            cell.imageFound = false
+            cell.login = dict.value(forKey: "login") as! String
+            cell.avatarUrl = dict.value(forKey: "avatar_url") as! String
+            return cell
+        }
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        self.performSegue(withIdentifier: "followerSelected", sender: collectionView.cellForItem(at: indexPath))
+        if indexPath.row == followersArray.count {
+            // request more users
+        } else {
+            self.performSegue(withIdentifier: "followerSelected", sender: collectionView.cellForItem(at: indexPath))
+        }
     }
     
     //----------NetworkRequesterDelegate----------
